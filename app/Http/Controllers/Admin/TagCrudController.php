@@ -28,16 +28,19 @@ class TagCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
+
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+       // $this->crud->setFromDb();
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(TagRequest::class);
+        $this->crud->addField(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+      //  $this->crud->setFromDb();
     }
 
     protected function setupUpdateOperation()
