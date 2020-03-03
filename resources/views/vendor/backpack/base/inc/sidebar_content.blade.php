@@ -3,3 +3,4 @@
 <li class=nav-item><a class=nav-link href="{{ backpack_url('elfinder') }}"><i class="nav-icon fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('tag') }}'><i class='nav-icon fa fa-question'></i> Tags</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('type') }}'><i class='nav-icon fa fa-question'></i> Types</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('resource') }}'><i class='nav-icon fa fa-question'></i> Resources</a></li>
