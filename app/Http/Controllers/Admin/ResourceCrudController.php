@@ -45,7 +45,14 @@ class ResourceCrudController extends CrudController
             'attribute'=>"label",
             'model'=>"App\Models\Type"
         ]);
-
+        $this->crud->addColumn([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'summernote',
+            'options' => [
+                'height' => 200,
+            ],
+        ]);
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
     }
@@ -68,6 +75,11 @@ class ResourceCrudController extends CrudController
             'attribute'=>'label'
         ]);
 
+        $this->crud->addField([
+            'name' => 'description',
+            'type' => 'text',
+            'label' => 'Description'
+        ]);
         $this->crud->addField([
                 'name' => 'uploaded_by',
                 'type' => 'hidden',
