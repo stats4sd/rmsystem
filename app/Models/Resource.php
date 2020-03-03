@@ -34,7 +34,13 @@ class Resource extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function user(){
+        return $this->belongsTo('App\Models\BackpackUser', 'uploaded_by');
+    }
 
+    public function type(){
+        return $this->belongsTo('App\Models\Type', 'type_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

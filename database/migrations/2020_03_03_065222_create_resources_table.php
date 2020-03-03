@@ -15,7 +15,7 @@ class CreateResourcesTable extends Migration
         Schema::create('resources', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->integer('type');
+            $table->integer('type_id');
             $table->integer('uploaded_by');
             $table->json('uploads');
             $table->string('description');

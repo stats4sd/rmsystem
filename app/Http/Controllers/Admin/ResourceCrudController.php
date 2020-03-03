@@ -28,16 +28,32 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        $this->crud->setColumns(['title','type']);
+
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+      //  $this->crud->setFromDb();
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ResourceRequest::class);
 
+        $this->crud->addField([
+            'name' => 'title',
+            'type' => 'text',
+            'label' => 'Title'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'type',
+            'type' => 'select',
+            'label' => 'Type',
+            'entity'=>'type',
+            'attribute'=>'label'
+        ]);
+    
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+       // $this->crud->setFromDb();
     }
 
     protected function setupUpdateOperation()
