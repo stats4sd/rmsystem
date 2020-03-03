@@ -53,6 +53,12 @@ class ResourceCrudController extends CrudController
                 'height' => 200,
             ],
         ]);
+        $this->crud->addColumn([
+            'name' => 'uploads',
+            'label' => 'Upload additional documents',
+            'type' => 'upload_multiple',
+            'upload' => true
+        ]);
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
     }
