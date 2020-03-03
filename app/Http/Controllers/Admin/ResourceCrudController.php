@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Auth;
 use App\Http\Requests\ResourceRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -28,7 +28,15 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','uploaded_by']);
+        $this->crud->setColumns(['title']);
+        $this->crud->addColumn([
+            'label'=>'Uploaded by',
+            'type'=>'select',
+            'entity'=>'user',
+            'name'=>'uploaded_by',
+            'attribute'=>'name',
+            'model'=>"App\Model\BackpackUser"
+        ]);
         $this->crud->addColumn([
             'label'=>'Type',
             'type'=>'select',
@@ -37,7 +45,6 @@ class ResourceCrudController extends CrudController
             'attribute'=>"label",
             'model'=>"App\Models\Type"
         ]);
-       
 
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
@@ -59,6 +66,12 @@ class ResourceCrudController extends CrudController
             'label' => 'Type',
             'entity'=>'type',
             'attribute'=>'label'
+        ]);
+
+        $this->crud->addField([
+                'name' => 'uploaded_by',
+                'type' => 'hidden',
+                'default' => Auth::guard('backpack')->user()->id,
         ]);
     
         // TODO: remove setFromDb() and manually define Fields
