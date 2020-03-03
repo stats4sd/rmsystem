@@ -28,7 +28,16 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','type']);
+        $this->crud->setColumns(['title','uploaded_by']);
+        $this->crud->addColumn([
+            'label'=>'Type',
+            'type'=>'select',
+            'entity'=>'type',
+            'name'=>'type_id',
+            'attribute'=>"label",
+            'model'=>"App\Models\Type"
+        ]);
+       
 
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
@@ -45,7 +54,7 @@ class ResourceCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'type',
+            'name' => 'type_id',
             'type' => 'select',
             'label' => 'Type',
             'entity'=>'type',
