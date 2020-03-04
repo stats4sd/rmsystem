@@ -28,7 +28,7 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','description']);
+        $this->crud->setColumns(['title','description','tags']);
         $this->crud->addColumn([
             'label'=>'Uploaded by',
             'type'=>'select',
@@ -80,6 +80,15 @@ class ResourceCrudController extends CrudController
             'label' => 'Upload additional documents',
             'type' => 'upload_multiple',
             'upload' => true
+        ]);
+        $this->crud->addField([
+            'label' => "Tags",
+            'type' =>'select2_multiple',
+            'name' => 'tags',
+            'entity'=>'tags',
+            'attribute'=>'name',
+            'model'=>"App\Models\Tag",
+            'pivot' => true
         ]);
         $this->crud->addField([
                 'name' => 'uploaded_by',
