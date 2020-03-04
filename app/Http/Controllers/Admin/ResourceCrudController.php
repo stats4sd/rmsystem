@@ -28,7 +28,7 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','description','tags']);
+        $this->crud->setColumns(['title','description']);
         $this->crud->addColumn([
             'label'=>'Uploaded by',
             'type'=>'select',
@@ -45,7 +45,14 @@ class ResourceCrudController extends CrudController
             'attribute'=>"label",
             'model'=>"App\Models\Type"
         ]);
-       
+       $this->crud->addColumn([
+           'label' => 'Tags',
+           'type'=>'select',
+           'entity'=>'tags',
+           'name'=>'tags',
+           'attribute'=>'name',
+           'model'=>'App\Models\Tag'
+       ]);
        
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
