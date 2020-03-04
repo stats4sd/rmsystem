@@ -13,12 +13,14 @@ class CreateLinkTagsResources extends Migration
      */
     public function up()
     {
-        Schema::table('tags_resources', function (Blueprint $table) {
+        Schema::dropIfExists('tags_resources');
+        Schema::create('tags_resources', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('tag_id')->unsigned();
             $table->integer('resource_id')->unsigned();
-            $table->foreign('tag_id')->references('id')->on('tag')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('resource_id')->references('id')->on('resource')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('resource_id')->references('id')->on('resources')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }
@@ -30,8 +32,7 @@ class CreateLinkTagsResources extends Migration
      */
     public function down()
     {
-        Schema::table('tags_resources', function (Blueprint $table) {
+        Schema::dropIfExists('tags_resources');
             //
-        });
     }
 }
