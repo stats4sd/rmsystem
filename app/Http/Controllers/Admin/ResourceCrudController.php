@@ -28,7 +28,7 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title']);
+        $this->crud->setColumns(['title','description']);
         $this->crud->addColumn([
             'label'=>'Uploaded by',
             'type'=>'select',
@@ -45,20 +45,8 @@ class ResourceCrudController extends CrudController
             'attribute'=>"label",
             'model'=>"App\Models\Type"
         ]);
-        $this->crud->addColumn([
-            'name' => 'description',
-            'label' => 'Description',
-            'type' => 'summernote',
-            'options' => [
-                'height' => 200,
-            ],
-        ]);
-        $this->crud->addColumn([
-            'name' => 'uploads',
-            'label' => 'Upload additional documents',
-            'type' => 'upload_multiple',
-            'upload' => true
-        ]);
+       
+       
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
       //  $this->crud->setFromDb();
     }
@@ -83,8 +71,15 @@ class ResourceCrudController extends CrudController
 
         $this->crud->addField([
             'name' => 'description',
-            'type' => 'text',
+            'type' => 'summernote',
             'label' => 'Description'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'uploads',
+            'label' => 'Upload additional documents',
+            'type' => 'upload_multiple',
+            'upload' => true
         ]);
         $this->crud->addField([
                 'name' => 'uploaded_by',

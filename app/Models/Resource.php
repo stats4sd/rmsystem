@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\FileUploads;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class Resource extends Model
 {
-    use CrudTrait;
+    use CrudTrait, FileUploads;
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +23,9 @@ class Resource extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-
+    protected $casts = ['uploads'=> 'array'];
+    protected $uploads = ['uploads'];
+    protected $uploadPath ='resources_uploads';
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
