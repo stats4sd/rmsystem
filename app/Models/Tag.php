@@ -34,7 +34,9 @@ class Tag extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function resources(){
+        return $this->belongsToMany('App\Models\Resource','tags_resources','tag_id','resource_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

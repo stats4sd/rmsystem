@@ -44,6 +44,10 @@ class Resource extends Model
     public function type(){
         return $this->belongsTo('App\Models\Type', 'type_id');
     }
+
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag','tags_resources','resource_id','tag_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
