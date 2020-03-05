@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\FileUploads;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
-class Tag extends Model
+class Resource extends Model
 {
-    use CrudTrait;
+    use CrudTrait, FileUploads;
 
     /*
     |--------------------------------------------------------------------------
@@ -15,14 +16,16 @@ class Tag extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'tags';
+    protected $table = 'resources';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-
+    protected $casts = ['uploads'=> 'array'];
+    protected $uploads = ['uploads'];
+    protected $uploadPath ='resources_uploads';
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -34,8 +37,16 @@ class Tag extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function resources(){
-        return $this->belongsToMany('App\Models\Resource','tags_resources','tag_id','resource_id');
+    public function user(){
+        return $this->belongsTo('App\Models\BackpackUser', 'uploaded_by');
+    }
+
+    public function type(){
+        return $this->belongsTo('App\Models\Type', 'type_id');
+    }
+
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag','tags_resources','resource_id','tag_id');
     }
     /*
     |--------------------------------------------------------------------------
