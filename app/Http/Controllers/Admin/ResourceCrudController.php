@@ -28,34 +28,45 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','description']);
-        $this->crud->addColumn([
-            'label'=>'Uploaded by',
-            'type'=>'select',
-            'entity'=>'user',
-            'name'=>'uploaded_by',
-            'attribute'=>'name',
-            'model'=>"App\Model\BackpackUser"
+        $this->crud->addColumns([
+            [
+                'name'=>'title'
+            ],
+            [
+                'name'=>'description'
+            ],
+            [
+                'label'=>'Uploaded by',
+                'type'=>'select',
+                'entity'=>'user',
+                'name'=>'uploaded_by',
+                'attribute'=>'name',
+                'model'=>"App\Model\BackpackUser"
+            ],
+            [
+                'label'=>'Type',
+                'type'=>'select',
+                'entity'=>'type',
+                'name'=>'type_id',
+                'attribute'=>"label",
+                'model'=>"App\Models\Type"
+            ],
+            [
+                'label' => 'Tags',
+                'type'=>'select',
+                'entity'=>'tags',
+                'name'=>'tags',
+                'attribute'=>'name',
+                'model'=>'App\Models\Tag'
+            ],
+            [
+                'label' => 'Files',
+              //  'type'=>'upload_multiple',
+                'name'=>'uploads',
+                'disk'=>'public'
+            
+            ]
         ]);
-        $this->crud->addColumn([
-            'label'=>'Type',
-            'type'=>'select',
-            'entity'=>'type',
-            'name'=>'type_id',
-            'attribute'=>"label",
-            'model'=>"App\Models\Type"
-        ]);
-       $this->crud->addColumn([
-           'label' => 'Tags',
-           'type'=>'select',
-           'entity'=>'tags',
-           'name'=>'tags',
-           'attribute'=>'name',
-           'model'=>'App\Models\Tag'
-       ]);
-       
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-      //  $this->crud->setFromDb();
     }
 
     protected function setupCreateOperation()
