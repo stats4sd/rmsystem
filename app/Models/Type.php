@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
-class Tag extends Model
+class Type extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Tag extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'tags';
+    protected $table = 'types';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,15 +28,15 @@ class Tag extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function resource(){
+        return $this->hasMany('App\Models\Resource');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function resources(){
-        return $this->belongsToMany('App\Models\Resource','tags_resources','tag_id','resource_id');
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
