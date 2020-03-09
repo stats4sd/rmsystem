@@ -28,7 +28,10 @@ class Type extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function resource(){
+        //has one resource
+        return $this->hasOne('App\Models\Resource');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
