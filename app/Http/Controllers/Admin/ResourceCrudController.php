@@ -28,83 +28,90 @@ class ResourceCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['title','description']);
-        $this->crud->addColumn([
-            'label'=>'Uploaded by',
-            'type'=>'select',
-            'entity'=>'user',
-            'name'=>'uploaded_by',
-            'attribute'=>'name',
-            'model'=>"App\Model\BackpackUser"
+        $this->crud->addColumns([
+            [
+                'name'=>'title'
+            ],
+            [
+                'name'=>'description'
+            ],
+            [
+                'label'=>'Uploaded by',
+                'type'=>'select',
+                'entity'=>'user',
+                'name'=>'uploaded_by',
+                'attribute'=>'name',
+                'model'=>"App\Model\BackpackUser"
+            ],
+            [
+                'label'=>'Type',
+                'type'=>'select',
+                'entity'=>'type',
+                'name'=>'type_id',
+                'attribute'=>"label",
+                'model'=>"App\Models\Type"
+            ],
+            [
+                'label' => 'Tags',
+                'type'=>'select',
+                'entity'=>'tags',
+                'name'=>'tags',
+                'attribute'=>'name',
+                'model'=>'App\Models\Tag'
+            ],
+            [
+                'label' => 'Files',
+              //  'type'=>'upload_multiple',
+                'name'=>'uploads',
+                'disk'=>'public'
+            
+            ]
         ]);
-        $this->crud->addColumn([
-            'label'=>'Type',
-            'type'=>'select',
-            'entity'=>'type',
-            'name'=>'type_id',
-            'attribute'=>"label",
-            'model'=>"App\Models\Type"
-        ]);
-       $this->crud->addColumn([
-           'label' => 'Tags',
-           'type'=>'select',
-           'entity'=>'tags',
-           'name'=>'tags',
-           'attribute'=>'name',
-           'model'=>'App\Models\Tag'
-       ]);
-       
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-      //  $this->crud->setFromDb();
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ResourceRequest::class);
 
-        $this->crud->addField([
-            'name' => 'title',
-            'type' => 'text',
-            'label' => 'Title'
-        ]);
-
-        $this->crud->addField([
-            'name' => 'type_id',
-            'type' => 'select',
-            'label' => 'Type',
-            'entity'=>'type',
-            'attribute'=>'label'
-        ]);
-
-        $this->crud->addField([
-            'name' => 'description',
-            'type' => 'summernote',
-            'label' => 'Description'
-        ]);
-
-        $this->crud->addField([
-            'name' => 'uploads',
-            'label' => 'Upload additional documents',
-            'type' => 'upload_multiple',
-            'upload' => true
-        ]);
-        $this->crud->addField([
-            'label' => "Tags",
-            'type' =>'select2_multiple',
-            'name' => 'tags',
-            'entity'=>'tags',
-            'attribute'=>'name',
-            'model'=>"App\Models\Tag",
-            'pivot' => true
-        ]);
-        $this->crud->addField([
+        $this->crud->addFields([
+            [
+                'name' => 'title',
+                'type' => 'text',
+                'label' => 'Title'
+            ],
+            [
+                'name' => 'type_id',
+                'type' => 'select2',
+                'label' => 'Type',
+                'entity'=>'type',
+                'attribute'=>'label'
+            ],
+            [
+                'name' => 'description',
+                'type' => 'summernote',
+                'label' => 'Description'
+            ],
+            [
+                'name' => 'uploads',
+                'label' => 'Upload additional documents',
+                'type' => 'upload_multiple',
+                'upload' => true
+            ],
+            [
+                'label' => "Tags",
+                'type' =>'select2_multiple',
+                'name' => 'tags',
+                'entity'=>'tags',
+                'attribute'=>'name',
+                'model'=>"App\Models\Tag",
+                'pivot' => true
+            ],
+            [
                 'name' => 'uploaded_by',
                 'type' => 'hidden',
                 'default' => Auth::guard('backpack')->user()->id,
+            ]
         ]);
-    
-        // TODO: remove setFromDb() and manually define Fields
-       // $this->crud->setFromDb();
     }
 
     protected function setupUpdateOperation()

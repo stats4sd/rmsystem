@@ -18,7 +18,7 @@ class CreateResourcesTable extends Migration
             $table->integer('type_id');
             $table->integer('uploaded_by');
             $table->json('uploads');
-            $table->string('description');
+            $table->text('description');
             $table->string('field');
             $table->timestamps();
         });
