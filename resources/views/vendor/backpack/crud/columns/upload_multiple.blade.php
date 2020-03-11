@@ -5,15 +5,25 @@
 @endphp
 
 <span>
+@if ($value && count($value))
 
+    @foreach($value as $file)
 
-@foreach($value as $k)
+        @if($file>0)
+        
 
-    @if($k>0)
-    {{ $k['name'] }} <br>
-   @endif
+        - <a target="_blank" href="{{ isset($column['disk'])?asset(\Storage::disk($column['disk'])->url($file['path'])):asset($file['path']) }}">{{ $file['name'] }}</a><br>
    
-@endforeach
+        {{--
+        -<a target="_blank" href="http://localhost/backpack/public/storage/{{$file['path']}}"> {{ $file['name'] }}<br></a>
+        --}}
+        @endif
+   
+    @endforeach
 
+@else
+
+    -
+@endif
 
 </span>
