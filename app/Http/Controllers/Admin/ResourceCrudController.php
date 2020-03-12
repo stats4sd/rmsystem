@@ -61,7 +61,7 @@ class ResourceCrudController extends CrudController
             ],
             [
                 'label' => 'Files',
-              //  'type'=>'upload_multiple',
+                'type'=>'upload_multiple',
                 'name'=>'uploads',
                 'disk'=>'public'
             
