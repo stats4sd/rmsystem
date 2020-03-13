@@ -29,6 +29,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
 
@@ -48,8 +51,6 @@ services:
     volumes:
       - dbdata:/var/lib/mysql  
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
-      - ./:/var/www
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
 
