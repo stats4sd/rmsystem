@@ -19,7 +19,6 @@ class CreateResourcesTable extends Migration
             $table->integer('uploaded_by')->unsigned();
             $table->json('uploads');
             $table->text('description');
-            $table->string('field');
             $table->timestamps();
         });
     }

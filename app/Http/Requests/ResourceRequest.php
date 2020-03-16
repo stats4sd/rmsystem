@@ -26,7 +26,8 @@ class ResourceRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+             'title' => 'required|min:10|max:255',
+             'description' => 'required'
         ];
     }
 
