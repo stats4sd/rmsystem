@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Resource;
+use Illuminate\Support\Facades\Storage;
 
 class ResourceObserver
 {
@@ -35,9 +36,21 @@ class ResourceObserver
      */
     public function deleted(Resource $resource)
     {
-        //
-    }
 
+    }
+    public function deleting(Resource $resource)
+    {
+       $files = $resource->uploads;
+       if($files && count($files)){
+           foreach($files as $file){
+               if($file>0){
+                 //  Storage::delete($file['path']);
+                   Storage::disk('public')->delete($file['path']);
+                }
+           }
+       }
+ 
+    }
     /**
      * Handle the resource "restored" event.
      *
