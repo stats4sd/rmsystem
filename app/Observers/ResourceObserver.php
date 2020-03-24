@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Resource;
+use App\Models\Resource;
 
 class ResourceObserver
 {
@@ -14,7 +14,6 @@ class ResourceObserver
      */
     public function created(Resource $resource)
     {
-        //
     }
 
     /**
