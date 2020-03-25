@@ -47,6 +47,13 @@ folders:
      username: **vagrant**  
      password: **vagrant**
 
+    Alternatively, if homestead is [included in path](https://laravel.com/docs/7.x/homestead#accessing-homestead-globally) access via
+
+    ```
+    homestead up
+    homestead ssh
+    ```
+
 6. Install dependencies
 
 ```
