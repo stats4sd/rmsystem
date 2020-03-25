@@ -72,15 +72,17 @@ Note, windows users will have issues with symlinks unless running above --no-bin
 
 7. Run the server
 
-```
-php artisan serve
-```
+(follow instructions from main docs)
 
 Assuming all installed correctly, the server should be accessible from any web browser at http://localhost:8000
 
 ## Troubleshooting
 
-Making changes to Homestead:
+### Making changes to Homestead:
 
 -   Make sure you are running commands from the Homestead cloned repo directory
 -   run `vagrant reload` to refresh any changes
+
+### Permission errors
+
+-   If installing any npm modules globally may need to run with `sudo` command
