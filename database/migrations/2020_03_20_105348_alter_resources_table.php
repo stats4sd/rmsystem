@@ -26,7 +26,7 @@ class AlterResourcesTable extends Migration
     public function down()
     {
         Schema::table('resources', function (Blueprint $table) {
-            //
+            $table->unique('title', 'resources_title_unique');
         });
     }
 }
