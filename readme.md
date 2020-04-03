@@ -1,6 +1,6 @@
 # RMSystem
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+![](https://github.com/KingMike100/rmsystem/.github/workflows/docker.yml/badge.svg)
 
 A project to build a demo "research management system", to allow research teams to centrally store data, documents, metadata etc during the active life of their research project.
 
