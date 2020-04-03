@@ -78,8 +78,21 @@ where `<service>` is the name of the container service as described in the `dock
 Following are examples of launching Laravel development commands inside the app service container.
 
 
-
-
-
-
+Installing dependencies
+```sh
+$ docker-compose exec app composer install
+```
+Generating the app key
+```sh
+$ docker-compose exec app php artisan key:generate
+```
+Migrating the tables
+```sh
+$ docker-compose exec app php artisan migrate
+```
+Creating a storage symbolic link for file storage
+```sh
+$ docker-compose exec app php artisan storage:link
+```
+Launch the application from your browser via http://ip-address/admin
   
