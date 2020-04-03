@@ -1,6 +1,6 @@
 # RMSystem
 
-![](https://github.com/KingMike100/rmsystem/.github/workflows/docker.yml/badge.svg)
+![Test](https://github.com/KingMike100/rmsystem/workflows/CI/badge.svg)
 
 A project to build a demo "research management system", to allow research teams to centrally store data, documents, metadata etc during the active life of their research project.
 
