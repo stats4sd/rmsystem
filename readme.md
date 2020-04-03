@@ -1,6 +1,6 @@
 # RMSystem
 
-![Test](https://github.com/KingMike100/rmsystem/workflows/CI/badge.svg)
+![CI](https://github.com/stats4sd/rmsystem/workflows/CI/badge.svg)
 
 A project to build a demo "research management system", to allow research teams to centrally store data, documents, metadata etc during the active life of their research project.
 
