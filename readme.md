@@ -54,44 +54,13 @@ Rename .env.example to .env file in the root of your folder and insert your key/
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
-
-MYSQL_DATABASE=
-MYSQL_USER=user
-MYSQL_PASSWORD=
-MYSQL_ROOT_PASSWORD=
+DB_ROOT_PASSWORD=
 APP_URL=
 ```
-3. Finally, Launch the RMSystem application
+3. Run the init.sh script that executes the initial required commands
 ```sh
-$ docker-compose up -d
+$ sh ./init.sh
 ```
-### Executing commands
-Commands can be launched inside the `app` Laravel Development Container with `docker-compose` using the `exec` command.
-The general structure of the `exec` command is:
 
-```sh
-$ docker-compose exec <service> <command>
-```
-where `<service>` is the name of the container service as described in the `docker-compose.yml` file and `<command>` is the command you want to launch inside the service.
-
-Following are examples of launching Laravel development commands inside the app service container.
-
-
-Installing dependencies
-```sh
-$ docker-compose exec app composer install
-```
-Generating the app key
-```sh
-$ docker-compose exec app php artisan key:generate
-```
-Migrating the tables
-```sh
-$ docker-compose exec app php artisan migrate
-```
-Creating a storage symbolic link for file storage
-```sh
-$ docker-compose exec app php artisan storage:link
-```
 Launch the application from your browser via http://ip-address/admin
   
