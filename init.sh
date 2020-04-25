@@ -21,3 +21,9 @@ docker-compose exec app php artisan db:seed
 #Create a symbolic link to public folder storage
 docker-compose exec app php artisan storage:link
 
+#Assigning permissions to root user and web server
+docker-compose exec app bash -c "chown -R root:www-data ."
+docker-compose exec app bash -c "find . -type f -exec chmod 664 {} \;"
+docker-compose exec app bash -c "find . -type d -exec chmod 755 {} \;"
+docker-compose exec app bash -c "chgrp -R www-data storage bootstrap/cache"
+docker-compose exec app bash -c "chmod -R ug+rwx storage bootstrap/cache"
