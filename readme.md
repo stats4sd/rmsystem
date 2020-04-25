@@ -62,5 +62,5 @@ APP_URL=
 $ sh ./init.sh
 ```
 
-4.Launch the application from your browser via http://ip-address/admin
+4. Launch the application from your browser via http://ip-address/admin
   
