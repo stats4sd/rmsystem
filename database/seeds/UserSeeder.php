@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         factory(App\Models\User::class)->create([
             'name' => 'Admin',
             'email'=>'admin@stats4sd.org',
-            'id'=>'10'
+            'id'=>'1'
         ]);
     }
 }
