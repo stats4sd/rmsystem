@@ -1,4 +1,5 @@
 #Script to execute the initial RMS commands
+
 #!/bin/sh
 docker-compose up -d
 
@@ -11,8 +12,12 @@ docker-compose exec app php artisan key:generate
 #caching config files
 docker-compose exec app php artisan config:cache
 
-#Migrate tabeles to database
+#Migrate tables to database
 docker-compose exec app php artisan migrate
+
+#Seed the Admin table
+docker-compose exec app php artisan db:seed
 
 #Create a symbolic link to public folder storage
 docker-compose exec app php artisan storage:link
+
