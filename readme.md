@@ -47,7 +47,6 @@ https://docs.docker.com/compose/install/#install-compose-on-linux-systems
 ```sh
 $ git clone https://github.com/stats4sd/rmsystem.git
 $ cd rmsystem
-$ node app
 ```
 2. Setting up environment variables
 Rename .env.example to .env file in the root of your folder and insert your key/value pairs in the following format of KEY=VALUE:
